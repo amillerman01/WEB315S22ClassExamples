@@ -13,3 +13,7 @@ Commit time stamps aren't dependent on when you push the code to the github serv
 ## Commits can be made directly on github.com
 
 You can make changes to files directly on github.com. This is useful for small changes, and a few file uploads, but nothing overly complex
+
+## Making changes from a zip
+
+If you make changes from a zip, you can replace those files on your local repository later
