@@ -1,1 +1,0 @@
-var constantValue = "This is an example";
