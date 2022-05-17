@@ -2,9 +2,18 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    <h2>somehtml</h2>
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">My first web application!</h1>
+    <p>
+        The date and time right now STATICALLY is <strong>5/17/2022 1:30:50 PM</strong>
+    </p>
+    <p>
+        The date and time right now DYNAMICALLY is <strong>@DateTime.Now</strong>
+    </p>
+    <p>
+        The date and time right now at the prime meridian DYNAMICALLY <strong>@DateTime.UtcNow</strong>
+    </p>
 </div>
