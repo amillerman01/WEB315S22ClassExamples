@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var username = "amillerman01";
     <h2>somehtml</h2>
 }
 
@@ -15,5 +16,8 @@
     </p>
     <p>
         The date and time right now at the prime meridian DYNAMICALLY <strong>@DateTime.UtcNow</strong>
+    </p>
+    <p>
+        The username is @username
     </p>
 </div>
