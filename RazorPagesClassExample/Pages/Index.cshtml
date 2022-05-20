@@ -48,4 +48,17 @@
     <p>@valueFromTheServer</p>
     <p>useful for content that comes from WYSIWYG's (what you see is what you get)</p>
     </p>
+    <p>
+    <h3>Code Block example</h3>
+        @* <span>trying to acess it before Code Block: @localName</span><br> *@
+        @{
+            var localName = "Andrew";
+        <span>Using razor syntax inside of a razor Code Block: @localName</span><br>
+        }
+    <span>I can also access it outside of the Code Block: @localName</span>
+    </p>
+    <p>
+    <h3>Cannot declare variable in explicit expression</h3>
+        @* <h3>Trying to set a value in an explicit expression: @(var somevariable = 10)</h3> *@
+    </p>
 </div>
