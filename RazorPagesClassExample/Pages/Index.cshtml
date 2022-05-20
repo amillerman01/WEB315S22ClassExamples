@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
     var username = "amillerman01";
+    DateTime today = new DateTime();
     <h2>somehtml</h2>
 }
 
@@ -19,5 +20,24 @@
     </p>
     <p>
         The username is @username
+        email me at amillerman01@@stclaircollege.ca
+    </p>
+    <p>
+    <h3>Documentation</h3>
+    in order to display the razor syntax @@username, we need to use 2 at symbols
+    </p>
+    <p>
+    <h3>Special characters in html</h3>
+    &amp;<br>
+    &copy;<br>
+    word 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word 2<br>
+    word 1 word 2
+    </p>
+    <p>
+    <h3>Using the date object</h3>
+    <p>The current date is: @DateTime.Now</p>
+    <p>is 2050 a leap year? The server says: @DateTime.IsLeapYear(2050)</p>
+    <p>The date a week ago is @(DateTime.Now - TimeSpan.FromDays(7))</p>
+    <p>The date a week from now is @(DateTime.Now + TimeSpan.FromDays(7))</p>
     </p>
 </div>
