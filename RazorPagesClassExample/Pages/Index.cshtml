@@ -4,6 +4,7 @@
     ViewData["Title"] = "Home page";
     var username = "amillerman01";
     DateTime today = new DateTime();
+    var valueFromTheServer = "<div>Some potentially unsafe string with html in it</div>";
     <h2>somehtml</h2>
 }
 
@@ -41,5 +42,10 @@
     <p>is 2050 a leap year? The server says: <strong>@(DateTime.IsLeapYear(2050) ? "Yes" : "No")</strong></p>
     <p>The date a week ago is @(DateTime.Now - TimeSpan.FromDays(7))</p>
     <p>The date a week from now is @(DateTime.Now + TimeSpan.FromDays(7))</p>
+    </p>
+    <p>
+    <h3>Html Encoding Example</h3>
+    <p>@valueFromTheServer</p>
+    <p>useful for content that comes from WYSIWYG's (what you see is what you get)</p>
     </p>
 </div>
