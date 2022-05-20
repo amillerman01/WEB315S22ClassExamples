@@ -36,7 +36,9 @@
     <p>
     <h3>Using the date object</h3>
     <p>The current date is: @DateTime.Now</p>
-    <p>is 2050 a leap year? The server says: @DateTime.IsLeapYear(2050)</p>
+        @* Example of using a ternary operator *@
+        @* <p>is 2050 a leap year? The server says: @( condition ? valueIfItIsTrue : valueIfItIsFalse)</p> *@
+    <p>is 2050 a leap year? The server says: <strong>@(DateTime.IsLeapYear(2050) ? "Yes" : "No")</strong></p>
     <p>The date a week ago is @(DateTime.Now - TimeSpan.FromDays(7))</p>
     <p>The date a week from now is @(DateTime.Now + TimeSpan.FromDays(7))</p>
     </p>
