@@ -61,4 +61,21 @@
     <h3>Cannot declare variable in explicit expression</h3>
         @* <h3>Trying to set a value in an explicit expression: @(var somevariable = 10)</h3> *@
     </p>
+    <p>
+    <h3>Transitions</h3>
+    <p>Implicit:
+            @{
+                var implicitTransitionValue = 10;
+        <p>We can put html directly in the codeblock: @implicitTransitionValue</p>
+            }
+    </p>
+    <p>Explicit:
+            @{
+                var explicitTransitionValue = 20;
+                <text>
+                <span>We can put html directly in the codeblock: @explicitTransitionValue</span>
+                </text>
+            }
+    </p>
+    </p>
 </div>
