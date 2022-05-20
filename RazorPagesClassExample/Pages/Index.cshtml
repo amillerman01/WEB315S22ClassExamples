@@ -2,80 +2,100 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    var username = "amillerman01";
-    DateTime today = new DateTime();
+    var username = "amillerman01"; // local variable we will use later
+    DateTime beginningOfTime = new DateTime(); // local variable with a specific type set and object is initialized
     var valueFromTheServer = "<div>Some potentially unsafe string with html in it</div>";
-    <h2>somehtml</h2>
+    <h2>some html directly in the code block is allowed</h2>
 }
 
-<div class="text-center">
+<div class="index-wrapper">
     <h1 class="display-4">My first web application!</h1>
-    <p>
+    <div>
+        <h3>Static date time example</h3>
         The date and time right now STATICALLY is <strong>5/17/2022 1:30:50 PM</strong>
-    </p>
-    <p>
+    </div>
+    <div>
+        <h3>Dynamic date time example</h3>
         The date and time right now DYNAMICALLY is <strong>@DateTime.Now</strong>
-    </p>
-    <p>
-        The date and time right now at the prime meridian DYNAMICALLY <strong>@DateTime.UtcNow</strong>
-    </p>
-    <p>
+    </div>
+    <div>
+        <h3>Dynamic date time example using UTC</h3>
+        The date and time right now at the prime meridian DYNAMICALLY <strong>@DateTime.UtcNow</strong><br>
+        For more info on what UTC is, you can go <a href="https://www.timeanddate.com/worldclock/timezone/utc">here</a>
+    </div>
+    <div>
+        <h3>Date from an object</h3>
+        Date value if we just output the value assigned by default: @beginningOfTime
+    </div>
+    <div>
+        <h3>Example of accessing a local variable</h3>
         The username is @username
+    </div>
+    <div>
+        <h3>Example of escaping the @@ symbol</h3>
         email me at amillerman01@@stclaircollege.ca
-    </p>
-    <p>
-    <h3>Documentation</h3>
-    in order to display the razor syntax @@username, we need to use 2 at symbols
-    </p>
-    <p>
-    <h3>Special characters in html</h3>
-    &amp;<br>
-    &copy;<br>
-    word 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word 2<br>
-    word 1 word 2
-    </p>
-    <p>
-    <h3>Using the date object</h3>
-    <p>The current date is: @DateTime.Now</p>
+    </div>
+    <div>
+        <h3>Usecase example of @@: Documentation of razor syntax</h3>
+        Example: In order to display the razor syntax @@username, we need to use 2 at symbols
+    </div>
+    <div>
+        <h3>Special characters in html</h3>
+        &amp;<br>
+        &copy;<br>
+        word 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word 2<br>
+        word 1 word 2
+    </div>
+    <div>
+        <h3>Using the date object</h3>
+        <div>The current date is: @DateTime.Now</div>
         @* Example of using a ternary operator *@
-        @* <p>is 2050 a leap year? The server says: @( condition ? valueIfItIsTrue : valueIfItIsFalse)</p> *@
-    <p>is 2050 a leap year? The server says: <strong>@(DateTime.IsLeapYear(2050) ? "Yes" : "No")</strong></p>
-    <p>The date a week ago is @(DateTime.Now - TimeSpan.FromDays(7))</p>
-    <p>The date a week from now is @(DateTime.Now + TimeSpan.FromDays(7))</p>
-    </p>
-    <p>
-    <h3>Html Encoding Example</h3>
-    <p>@valueFromTheServer</p>
-    <p>useful for content that comes from WYSIWYG's (what you see is what you get)</p>
-    </p>
-    <p>
-    <h3>Code Block example</h3>
+        @* <div>is 2050 a leap year? The server says: @( condition ? valueIfItIsTrue : valueIfItIsFalse)</div> *@
+        <div>Is 2050 a leap year? The server says: <strong>@(DateTime.IsLeapYear(2050) ? "Yes" : "No")</strong></div>
+        <div>The date a week ago is @(DateTime.Now - TimeSpan.FromDays(7))</div>
+        <div>The date a week from now is @(DateTime.Now + TimeSpan.FromDays(7))</div>
+    </div>
+    <div>
+        <h3>Html Encoding Example</h3>
+        <div>Outputting a string to html: @valueFromTheServer</div>
+        <div>Useful for content to be marked as unsafe by default, such as when it comes from a WYSIWYG editor (what you
+            see is what you get)</div>
+    </div>
+    <div>
+        <h3>Trusting html from a string</h3>
+        <p>If we trust the html we received in the string, we can still output it using @@Html.Raw()</p>
+        <p>@Html.Raw(valueFromTheServer)</p>
+    </div>
+    <div>
+        <h3>Code Block example</h3>
         @* <span>trying to acess it before Code Block: @localName</span><br> *@
         @{
             var localName = "Andrew";
-        <span>Using razor syntax inside of a razor Code Block: @localName</span><br>
+            @* defined here in the code block, but accessible anywhere after this point in the file *@
+            <span>Using razor syntax inside of a razor code Block: @localName</span><br>
         }
-    <span>I can also access it outside of the Code Block: @localName</span>
-    </p>
-    <p>
-    <h3>Cannot declare variable in explicit expression</h3>
+        <span>I can also access it outside of the code Block: @localName</span>
+    </div>
+    <div>
+        <h3>Cannot declare variable in explicit expression</h3>
         @* <h3>Trying to set a value in an explicit expression: @(var somevariable = 10)</h3> *@
-    </p>
-    <p>
-    <h3>Transitions</h3>
-    <p>Implicit:
+    </div>
+    <div>
+        <h3>Transitions</h3>
+        <div>Implicit:
             @{
                 var implicitTransitionValue = 10;
-        <p>We can put html directly in the codeblock: @implicitTransitionValue</p>
+                <div>We can put html directly in the code block: @implicitTransitionValue</div>
             }
-    </p>
-    <p>Explicit:
+        </div>
+        <div>Explicit:
             @{
                 var explicitTransitionValue = 20;
+                @* the text tag will not be rendered on the page *@
                 <text>
-                <span>We can put html directly in the codeblock: @explicitTransitionValue</span>
+                    <p>We can put html directly in the code block: @explicitTransitionValue</p>
                 </text>
             }
-    </p>
-    </p>
+        </div>
+    </div>
 </div>
