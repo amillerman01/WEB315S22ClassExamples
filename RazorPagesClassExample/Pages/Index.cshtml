@@ -156,4 +156,17 @@
             <p>Age: @person.Age</p>
         }
     </div>
+    <div>
+        <h3>A simple form using @@using</h3>
+        @using (Html.BeginForm())
+        {
+            <div>
+                <label>
+                    Email:
+                    <input type="email" id="Email" value="">
+                </label>
+                <button>Register</button>
+            </div>
+        }
+    </div>
 </div>
