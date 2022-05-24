@@ -98,4 +98,38 @@
             }
         </div>
     </div>
+    <div>
+        <h3>Control Structures : if statements</h3>
+        @{
+            var value = 81;
+        }
+        @if (value % 2 == 0) // value is an even number, because the remainder when divided by 2 is 0
+        {
+            <p>The value was even.</p>
+        }
+        else if (value >= 9000)
+        {
+            <p>The value is large.</p>
+        }
+        else
+        {
+            <p>The value is odd and small.</p>
+        }
+    </div>
+    <div>
+        <h3>Control Structures : Switch statements</h3>
+        @switch (value)
+        {
+            case 1:
+                <p>The value is 1!</p>
+                break;
+            case 9000:
+                <p>Your number is 9000!</p>
+                break;
+            default:
+                <p>Your number wasn't 1 or 9000.</p>
+                break;
+        }
+        <p>Switch statements really shine when checking for ENUM values</p>
+    </div>
 </div>
