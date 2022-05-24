@@ -1,0 +1,50 @@
+@page
+@model RazorPagesChessPlayersExample.Pages_ChessPlayers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ChessPlayer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ChessPlayer.ID" />
+            <div class="form-group">
+                <label asp-for="ChessPlayer.FullName" class="control-label"></label>
+                <input asp-for="ChessPlayer.FullName" class="form-control" />
+                <span asp-validation-for="ChessPlayer.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChessPlayer.DateOfTitleAcquisition" class="control-label"></label>
+                <input asp-for="ChessPlayer.DateOfTitleAcquisition" class="form-control" />
+                <span asp-validation-for="ChessPlayer.DateOfTitleAcquisition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChessPlayer.CurrentTitle" class="control-label"></label>
+                <input asp-for="ChessPlayer.CurrentTitle" class="form-control" />
+                <span asp-validation-for="ChessPlayer.CurrentTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChessPlayer.CurrentRating" class="control-label"></label>
+                <input asp-for="ChessPlayer.CurrentRating" class="form-control" />
+                <span asp-validation-for="ChessPlayer.CurrentRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

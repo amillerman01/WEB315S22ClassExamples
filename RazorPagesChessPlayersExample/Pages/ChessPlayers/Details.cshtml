@@ -1,0 +1,43 @@
+@page
+@model RazorPagesChessPlayersExample.Pages_ChessPlayers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ChessPlayer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChessPlayer.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChessPlayer.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChessPlayer.DateOfTitleAcquisition)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChessPlayer.DateOfTitleAcquisition)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChessPlayer.CurrentTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChessPlayer.CurrentTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChessPlayer.CurrentRating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChessPlayer.CurrentRating)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ChessPlayer.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

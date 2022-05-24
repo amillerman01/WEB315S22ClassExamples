@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace RazorPagesChessPlayersExample
 {
@@ -24,6 +25,9 @@ namespace RazorPagesChessPlayersExample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<RazorPagesChessPlayersExampleContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("RazorPagesChessPlayersExampleContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
