@@ -1,4 +1,5 @@
 ﻿@page
+@using RazorPagesClassExample.Models;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -131,5 +132,28 @@
                 break;
         }
         <p>Switch statements really shine when checking for ENUM values</p>
+    </div>
+    <div>
+        <h3>Control Structures : Switch statements</h3>
+        @{
+
+            var anotherTeacher = new Person("Chad", 30);
+            <p>anotherTeacher's name: @anotherTeacher.Name</p>
+            <p>anotherTeacher's age: @anotherTeacher.Age</p>
+            var people = new Person[]
+            {
+        new Person("Alex", 33),
+        new Person("Andrew", 41),
+        new Person("Diana", 28),
+        anotherTeacher
+            };
+        }
+        @for (var i = 0; i < people.Length; i++)
+        {
+            <p>Current index is: @i</p>
+            var person = people[i];
+            <p>Name: @person.Name</p>
+            <p>Age: @person.Age</p>
+        }
     </div>
 </div>
