@@ -169,4 +169,29 @@
             </div>
         }
     </div>
+    <div>
+        <h3>Try, Catch, Finally</h3>
+        @{
+            var busy = false; // this is a flag that would disable something on the page when it's true
+        }
+        @try // we want to run this code, but it might fail
+        {
+            busy = true;
+
+            throw new InvalidOperationException("You did something invalid.");
+
+        }
+        catch (Exception ex)
+        {
+            // if the try code causes some kind of error, we won't interupt the users experience with it
+            // instead we catch the error here and process it
+            <p>The exception message: @ex.Message</p>
+        }
+        finally
+        {
+            busy = false; // need to make sure the user can use that feature again whether it passes or fails
+                          // run this code whether the try completes or the catch completes
+            <p>The finally statement.</p>
+        }
+    </div>
 </div>
