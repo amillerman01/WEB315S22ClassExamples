@@ -43,7 +43,10 @@
                     @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateOfTitleAcquisition)
+                    @* Without the @Html.DisplayFor, the date will not obey our rule from the model
+                        [DataType(DataType.Date)]
+                        Meaning it will display the entire DateTime objects value, rather than just the date *@
+                    @item.DateOfTitleAcquisition
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CurrentTitle)
