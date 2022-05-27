@@ -16,13 +16,16 @@ namespace RazorPagesChessPlayersExample.Pages_ChessPlayers
         public IndexModel(RazorPagesChessPlayersExampleContext context)
         {
             _context = context;
+            // SomeValue = 10;
         }
 
-        public IList<ChessPlayer> ChessPlayer { get;set; }
+        public IList<ChessPlayer> ChessPlayer { get; set; }
+        public int SomeValue { get; set; } = 10;
 
         public async Task OnGetAsync()
         {
             ChessPlayer = await _context.ChessPlayer.ToListAsync();
+            // SomeValue = 10;
         }
     }
 }

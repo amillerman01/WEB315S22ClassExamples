@@ -10,6 +10,13 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<p>
+    First chess players name: @Model.ChessPlayer[0].FullName
+</p>
+<p>
+    The random number in our IndexModel value is @Model.SomeValue
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -29,26 +36,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ChessPlayer) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfTitleAcquisition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentRating)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.ChessPlayer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfTitleAcquisition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentRating)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
