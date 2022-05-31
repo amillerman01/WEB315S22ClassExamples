@@ -18,5 +18,6 @@ namespace RazorPagesChessPlayersExample.Models
         public DateTime DateOfTitleAcquisition { get; set; }
         public string CurrentTitle { get; set; }
         public int CurrentRating { get; set; }
+        public int NumberOfTournamentVictories { get; set; }
     }
 }

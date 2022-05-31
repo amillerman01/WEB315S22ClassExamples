@@ -26,21 +26,24 @@ namespace RazorPagesChessPlayersExample.Models
                         FullName = "Magnus Carlson",
                         DateOfTitleAcquisition = DateTime.Parse("1989-2-12"),
                         CurrentTitle = "GM",
-                        CurrentRating = 2800
+                        CurrentRating = 2800,
+                        NumberOfTournamentVictories = 1200
                     },
                     new ChessPlayer
                     {
                         FullName = "Hikaru Nikamura",
                         DateOfTitleAcquisition = DateTime.Parse("1990-2-12"),
                         CurrentTitle = "GM",
-                        CurrentRating = 2799
+                        CurrentRating = 2799,
+                        NumberOfTournamentVictories = 1000
                     },
                     new ChessPlayer
                     {
                         FullName = "Ben Finegold",
                         DateOfTitleAcquisition = DateTime.Parse("1970-2-12"),
                         CurrentTitle = "GM",
-                        CurrentRating = 2400
+                        CurrentRating = 2400,
+                        NumberOfTournamentVictories = 600
                     }
                 );
                 context.SaveChanges();
