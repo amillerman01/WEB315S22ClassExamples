@@ -27,11 +27,11 @@ namespace RazorPagesChessPlayersExample.Pages_ChessPlayers
                 return NotFound();
             }
 
-            ChessPlayer = await _context.ChessPlayer.FirstOrDefaultAsync(m => m.ID == id);
+            ChessPlayer = await _context.ChessPlayer.FirstOrDefaultAsync(individualChessPlayer => individualChessPlayer.ID == id);
 
             if (ChessPlayer == null)
             {
-                return NotFound();
+                return RedirectToPage("./Index");
             }
             return Page();
         }
