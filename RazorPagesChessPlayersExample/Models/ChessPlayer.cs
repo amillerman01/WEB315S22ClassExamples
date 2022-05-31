@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RazorPagesChessPlayersExample.Models
 {
@@ -24,5 +25,7 @@ namespace RazorPagesChessPlayersExample.Models
         public int CurrentRating { get; set; }
         [Display(Name = "Tournament Victories")]
         public int NumberOfTournamentVictories { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal AnnualWageAsChessPlayer { get; set; }
     }
 }

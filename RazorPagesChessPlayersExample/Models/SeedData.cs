@@ -27,7 +27,8 @@ namespace RazorPagesChessPlayersExample.Models
                         DateOfTitleAcquisition = DateTime.Parse("1989-2-12"),
                         CurrentTitle = "GM",
                         CurrentRating = 2800,
-                        NumberOfTournamentVictories = 1200
+                        NumberOfTournamentVictories = 1200,
+                        AnnualWageAsChessPlayer = 8000000
                     },
                     new ChessPlayer
                     {
@@ -35,7 +36,8 @@ namespace RazorPagesChessPlayersExample.Models
                         DateOfTitleAcquisition = DateTime.Parse("1990-2-12"),
                         CurrentTitle = "GM",
                         CurrentRating = 2799,
-                        NumberOfTournamentVictories = 1000
+                        NumberOfTournamentVictories = 1000,
+                        AnnualWageAsChessPlayer = 1000000
                     },
                     new ChessPlayer
                     {
@@ -43,7 +45,8 @@ namespace RazorPagesChessPlayersExample.Models
                         DateOfTitleAcquisition = DateTime.Parse("1970-2-12"),
                         CurrentTitle = "GM",
                         CurrentRating = 2400,
-                        NumberOfTournamentVictories = 600
+                        NumberOfTournamentVictories = 600,
+                        AnnualWageAsChessPlayer = 100000
                     }
                 );
                 context.SaveChanges();
