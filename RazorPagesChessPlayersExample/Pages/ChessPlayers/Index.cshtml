@@ -35,7 +35,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.ChessPlayer[0].CurrentRating)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChessPlayer[0].NumberOfTournamentVictories)
+            </th>
+            <th>Edit/Update/Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -56,6 +59,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CurrentRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfTournamentVictories)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
