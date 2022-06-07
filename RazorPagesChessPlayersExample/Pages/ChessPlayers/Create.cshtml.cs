@@ -16,6 +16,7 @@ namespace RazorPagesChessPlayersExample.Pages_ChessPlayers
         public CreateModel(RazorPagesChessPlayersExampleContext context)
         {
             _context = context;
+            ChessPlayer = new ChessPlayer();
         }
 
         public IActionResult OnGet()
@@ -25,6 +26,7 @@ namespace RazorPagesChessPlayersExample.Pages_ChessPlayers
 
         [BindProperty]
         public ChessPlayer ChessPlayer { get; set; }
+        public ChessPlayer ChessPlayer2 { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

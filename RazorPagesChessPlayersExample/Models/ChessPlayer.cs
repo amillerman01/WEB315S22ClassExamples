@@ -6,6 +6,9 @@ namespace RazorPagesChessPlayersExample.Models
 {
     public class ChessPlayer
     {
+        public ChessPlayer(){
+
+        }
         public int ID { get; set; }
         
         // public string FirstName { get; set; }
