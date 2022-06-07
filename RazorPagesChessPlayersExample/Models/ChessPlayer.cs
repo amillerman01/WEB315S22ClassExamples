@@ -22,11 +22,14 @@ namespace RazorPagesChessPlayersExample.Models
 
         [Display(Name = "Date Title was Acquired")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime DateOfTitleAcquisition { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$", ErrorMessage = "{0} must start with a capital letter, and can contain letters, numbers, spaces, hyphens and quotes")]
         [Display(Name = "Player Title")]
+        [StringLength(10)]
+        // [MinimumLength(2)]
         public string CurrentTitle { get; set; }
 
         [Display(Name = "Rating")]
