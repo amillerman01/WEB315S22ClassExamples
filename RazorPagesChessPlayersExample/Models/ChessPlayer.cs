@@ -28,6 +28,7 @@ namespace RazorPagesChessPlayersExample.Models
         public string CurrentTitle { get; set; }
 
         [Display(Name = "Rating")]
+        [Range(0, 3000)]
         [Required]
         public int CurrentRating { get; set; }
 
@@ -36,6 +37,7 @@ namespace RazorPagesChessPlayersExample.Models
         public int NumberOfTournamentVictories { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]
+        [Range(0.0, Double.MaxValue, ErrorMessage = "The value of {0} must be greater than {1}.")]
         [Required]
         public decimal AnnualWageAsChessPlayer { get; set; }
     }
