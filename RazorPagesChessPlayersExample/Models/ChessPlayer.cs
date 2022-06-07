@@ -22,6 +22,7 @@ namespace RazorPagesChessPlayersExample.Models
 
         [Display(Name = "Date Title was Acquired")]
         [DataType(DataType.Date)]
+        // [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime DateOfTitleAcquisition { get; set; }
