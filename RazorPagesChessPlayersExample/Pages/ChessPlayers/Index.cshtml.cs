@@ -18,14 +18,31 @@ namespace RazorPagesChessPlayersExample.Pages_ChessPlayers
             _context = context;
             // SomeValue = 10;
         }
+        public int SomeValue { get; set; } = 10;
 
         public IList<ChessPlayer> ChessPlayer { get; set; }
-        public int SomeValue { get; set; } = 10;
+
+        // adding a string we can search for
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+
+        // public async Task OnGetAsync()
+        // {
+        //     ChessPlayer = await _context.ChessPlayer.ToListAsync();
+        //     // SomeValue = 10;
+        // }
 
         public async Task OnGetAsync()
         {
-            ChessPlayer = await _context.ChessPlayer.ToListAsync();
-            // SomeValue = 10;
+            var chessPlayers = from c in _context.ChessPlayer
+                                select c;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                chessPlayers = chessPlayers.Where(s => s.FullName.Contains(SearchString));
+            }
+
+            ChessPlayer = await chessPlayers.ToListAsync();
         }
     }
 }
