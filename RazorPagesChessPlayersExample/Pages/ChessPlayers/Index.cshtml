@@ -11,6 +11,12 @@
     <a asp-page="Create">Create New</a>
 </p>
 
+<form>
+    <p>
+        Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter Names" />
+    </p>
+</form>
 @* <p>
     First chess players name: @Model.ChessPlayer[0].FullName
     </p>
