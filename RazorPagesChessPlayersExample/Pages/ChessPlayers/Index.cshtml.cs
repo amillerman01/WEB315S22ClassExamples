@@ -63,7 +63,7 @@ namespace RazorPagesChessPlayersExample.Pages_ChessPlayers
 
             if (!string.IsNullOrEmpty(SearchString))
             {
-                chessPlayers = chessPlayers.Where(s => s.FullName.Contains(SearchString));
+                chessPlayers = chessPlayers.Where(s => s.FullName.ToLower().Contains(SearchString.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(ChessPlayerCurrentTitle))
