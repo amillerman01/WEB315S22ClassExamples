@@ -1,5 +1,6 @@
 bin
 obj
+publish
 
 # If we were in production, we would need to add this as well
 # *.db
