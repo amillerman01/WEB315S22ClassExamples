@@ -6,6 +6,9 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+@* This causes an infinite recursive loop if we have this tag here *@
+@* <Counter /> *@
+
 @code {
     private int currentCount = 0;
 

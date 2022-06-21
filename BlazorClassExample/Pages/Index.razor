@@ -17,3 +17,58 @@ Welcome to your new app.
 @* <Counter></Counter> *@
 
 <Counter IncrementAmount="5" />
+
+
+<h1>Recursion</h1>
+<p>Factorial is a math concept where you are looking for the mulitplication of every number from a number down to 1</p>
+<p>It's usually represesnted in math with a ! after the number</p>
+<p>ex: 6 factorial is written as 6!</p>
+<p>It essentially runs 6 * 5 * 4 * 3 * 2 * 1 = 720</p>
+<p>Calculating 6 factorial iteratively returns: @FactorialIterative(6)</p>
+<p>Calculating 6 factorial returns: @Factorial(6)</p>
+
+<h1>Explicit type casting</h1>
+<p>The value of the decimal number is @roundMeDown</p>
+<p>The value of the number minus its decimals is @roundedDownNumber()</p>
+<p>The value of the 100 as a decimal is @makeADecimalValue()</p>
+
+@code {
+
+    private decimal roundMeDown = 3.141596M;
+
+    private int roundedDownNumber()
+    {
+        return (int)roundMeDown;
+    }
+
+    private int doIntegerConversionImplicitly()
+    {
+        var valueBeingCalculated = 100 * 3.4;
+        return (int)valueBeingCalculated;
+    }
+
+    private double makeADecimalValue()
+    {
+        return (double)(100);
+    }
+    private int FactorialIterative(int factor)
+    {
+        var factorialValue = 1;
+        for (var i = 1; i <= factor; i++)
+        {
+            factorialValue *= i;
+        }
+        return factorialValue;
+    }
+
+    // recursive definition of factorial
+    private int Factorial(int factor)
+    {
+        // base case is when factor is 0, then we don't do recursion
+        if (factor > 0)
+        {
+            return factor * Factorial(factor - 1);
+        }
+        return 1;
+    }
+}
