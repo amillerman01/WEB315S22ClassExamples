@@ -9,8 +9,26 @@
 @code {
     private int currentCount = 0;
 
+    @* private void IncrementCount()
+        {
+        if (currentCount < 10)
+        {
+        currentCount++;
+        }
+        else
+        {
+        currentCount = 0;
+        }
+        } *@
+
     private void IncrementCount()
     {
-        currentCount++;
+        if (currentCount < 10)
+        {
+            currentCount++;
+            return;
+        }
+        currentCount = 0;
     }
+
 }
