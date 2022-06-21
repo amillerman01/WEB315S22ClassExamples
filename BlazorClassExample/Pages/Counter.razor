@@ -9,6 +9,9 @@
 @code {
     private int currentCount = 0;
 
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+
     @* private void IncrementCount()
         {
         if (currentCount < 10)
@@ -23,9 +26,10 @@
 
     private void IncrementCount()
     {
-        if (currentCount < 10)
+        if (currentCount < 10 * IncrementAmount)
         {
-            currentCount++;
+            @* currentCount = currentCount + IncrementAmount; *@
+            currentCount += IncrementAmount;
             return;
         }
         currentCount = 0;
