@@ -10,6 +10,20 @@
         <button @onclick="@(e => UpdateHeading(e, buttonNumber))">
             Button #@i
         </button>
+
+        @* This is the same thing but with curly braces allowing us to run multiple commands in the lambda expression *@
+        @* <button @onclick="@(e => {
+            // we can add more code here if we want, and it will run when you click the button
+            UpdateHeading(e, buttonNumber);
+            })">
+            Button #@i
+            </button> *@
+
+        @* We can't sent the buttonNumber without using a lambda expression *@
+        @* <button @onclick="UpdateHeading">
+            Button #@i
+            </button> *@
+
     </p>
 }
 
