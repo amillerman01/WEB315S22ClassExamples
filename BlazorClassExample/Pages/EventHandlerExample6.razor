@@ -1,17 +1,54 @@
 @page "/example-6"
 
+<h4>Press the + key in the input box</h4>
 <p>
     <input value="@count" @onkeydown="KeyHandler" @onkeydown:preventDefault />
+    @* We use keydown as the event because the character gets added to the input on keydown, not keyup *@
+    @* <input value="@count" @onkeydown="KeyHandler" @onkeyup:preventDefault /> *@
 </p>
+<p>
+    The value of the key pressed is: @keyValue
+</p>
+
+<h4>Every other keypress will be ignored by the input below</h4>
+<p>
+    <input @onkeydown="ToggleDisable" @onkeydown:preventDefault="shouldPreventDefault" />
+</p>
+<p>
+    The value of the key pressed is: @secondKeyValue
+</p>
+
 
 @code {
     private int count = 0;
+    private string keyValue;
+    private string secondKeyValue;
+    private bool shouldPreventDefault = false; // if it's true, the input won't allow us to type into it
+
+    private void ToggleDisable(KeyboardEventArgs e)
+    {
+        secondKeyValue = e.Key;
+        shouldPreventDefault = !shouldPreventDefault;
+    }
 
     private void KeyHandler(KeyboardEventArgs e)
     {
-        if (e.Key == "+")
+
+        @* e.preventDefault() *@
+        keyValue = e.Key;
+        if (e.Key == "Home")
+        {
+            count = 0;
+        }
+        else if (e.Key == "+")
         {
             count++;
         }
+        else if (e.Key == "-")
+        {
+            --count;
+        }
+
+
     }
 }
