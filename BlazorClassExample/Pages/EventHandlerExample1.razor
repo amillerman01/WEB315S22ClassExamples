@@ -2,6 +2,7 @@
 
 <h1>@currentHeading</h1>
 
+
 <p>
     <label>
         New title
@@ -11,6 +12,8 @@
         Update heading
     </button>
 </p>
+<h6>The new heading value: @newHeading</h6>
+<p>This value only updates after you blur on the input (stop focusing on it)</p>
 
 <p>
     <label>
@@ -23,12 +26,20 @@
     private string currentHeading = "Initial heading";
     private string newHeading;
     private string checkedMessage = "Not changed yet";
+    private DateTime now = DateTime.Now;
 
     private void UpdateHeading()
     {
         currentHeading = $"{newHeading}!!!";
+        @* If we used javascript, the string literal looks like this: *@
+        @* currentHeading = `${newHeading}!!!`; *@
     }
 
+    @* This method won't work right, because the value of the variable "now" never changes after the page loads *@
+    private void CheckChangedStaticNow()
+    {
+        checkedMessage = $"Last changed at {now}";
+    }
     private void CheckChanged()
     {
         checkedMessage = $"Last changed at {DateTime.Now}";
