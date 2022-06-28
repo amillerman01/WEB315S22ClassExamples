@@ -1,7 +1,20 @@
+<h3>@Title</h3>
+
 <p>
     <button @onclick="OnClickCallback">
         Trigger a Parent component method
     </button>
+</p>
+
+<p>
+    <button @onclick="@(() => OnClickCallbackAsync.InvokeAsync("Message From Child"))">
+        Trigger a Parent component method
+    </button>
+</p>
+
+<h4>The render fragment from the parent</h4>
+<p>
+    @ChildContent
 </p>
 
 @code {
@@ -13,4 +26,6 @@
 
     [Parameter]
     public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+    [Parameter]
+    public EventCallback<string> OnClickCallbackAsync { get; set; }
 }
