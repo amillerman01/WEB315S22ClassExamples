@@ -12,22 +12,47 @@
         Child div that doesn't stop propagation when selected.
     </div>
 
+    <div class="m-1 p-1 border" @onclick="OnSelectChildDiv" @onclick:stopPropagation>
+        Child div that <strong>always</strong> stops propagation.
+    </div>
+
     <div class="m-1 p-1 border" @onclick="OnSelectChildDiv" @onclick:stopPropagation="stopPropagation">
         Child div that stops propagation when selected.
     </div>
 </div>
 
+<h3>The message that the parent and child are fighting over updating</h3>
 <p>
     @message
+</p>
+
+<p>
+    For debugging purposes, we're tracking the values of both the parent and child messages below
+</p>
+
+<h3>The parents message</h3>
+<p>
+    @parentMessage
+</p>
+<h3>The childs message</h3>
+<p>
+    @childMessage
 </p>
 
 @code {
     private bool stopPropagation = false;
     private string message;
+    private string parentMessage;
+    private string childMessage;
 
-    private void OnSelectParentDiv() =>
-    message = $"The parent div was selected. {DateTime.Now}";
-
-    private void OnSelectChildDiv() =>
-    message = $"A child div was selected. {DateTime.Now}";
+    private void OnSelectParentDiv()
+    {
+        parentMessage = $"The parent div was selected. {DateTime.Now}";
+        message = $"The parent div was selected. {DateTime.Now}";
+    }
+    private void OnSelectChildDiv()
+    {
+        childMessage = $"A child div was selected. {DateTime.Now}";
+        message = $"A child div was selected. {DateTime.Now}";
+    }
 }
