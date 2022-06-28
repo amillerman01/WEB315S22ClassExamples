@@ -3,9 +3,19 @@
 @for (var i = 0; i < 4; i++)
 {
     <p>
-        <button @onclick="ReportPointerLocation">
-            Where's my mouse pointer for this button?
-        </button>
+        @if (i == 0) // put the first button in the top left hand corner of the page, to make it easier to debug
+        {
+            <button @onclick="ReportPointerLocation" style="position: fixed; top: 0; left: 0;">
+                Where's my mouse pointer for this button?
+            </button>
+        }
+        else 
+        @* the other 3 buttons should display normally*@
+        {
+            <button @onclick="ReportPointerLocation">
+                Where's my mouse pointer for this button?
+            </button>
+        }
     </p>
 }
 
@@ -14,8 +24,27 @@
 @code {
     private string mousePointerMessage;
 
+    @* 0, 0 is based on the top left hand corner of the window *@
     private void ReportPointerLocation(MouseEventArgs e)
     {
-        mousePointerMessage = $"Mouse coordinates: {e.ScreenX}:{e.ScreenY}";
+        mousePointerMessage = $"Mouse coordinates: {e.ClientX}:{e.ClientY}";
     }
+
+    @* 0, 0 is based on the element itself *@
+    @* private void ReportPointerLocation(MouseEventArgs e)
+        {
+        mousePointerMessage = $"Mouse coordinates: {e.OffsetX}:{e.OffsetY}";
+        } *@
+
+    @* This one is not accessible in dotnet5 *@
+    @* private void ReportPointerLocation(MouseEventArgs e)
+        {
+        mousePointerMessage = $"Mouse coordinates: {e.PageX}:{e.PageY}";
+        } *@
+
+    @* 0, 0 is based on the top left hand corner of the far left screen of the device *@
+    @* private void ReportPointerLocation(MouseEventArgs e)
+        {
+        mousePointerMessage = $"Mouse coordinates: {e.ScreenX}:{e.ScreenY}";
+        } *@
 }
