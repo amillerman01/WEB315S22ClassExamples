@@ -10,4 +10,10 @@
 
 @code {
     private string heading = "Initial heading";
+
+    @* Don't necessarily need a whole method definition for something small that is used once *@
+    private void changeHeading(MouseEventArgs e)
+    {
+        heading = "New Heading!!!";
+    }
 }
