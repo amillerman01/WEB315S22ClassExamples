@@ -3,16 +3,31 @@
 <p>
     <input @ref="exampleInput" />
 </p>
+<p>
+    <input @ref="exampleInput2" />
+</p>
 
-<button @onclick="ChangeFocus">
-    Focus the Input Element
-</button>
+<p>
+    <button @onclick="ChangeFocus">
+        Focus the Input Element
+    </button>
+</p>
+<h3>Toggle the checkbox to change which input gets the focus</h3>
+<input type="checkbox" @bind="toggleFocus" />
 
 @code {
     private ElementReference exampleInput;
+    private ElementReference exampleInput2;
+    private bool toggleFocus = true;
 
     private async Task ChangeFocus()
     {
-        await exampleInput.FocusAsync();
+        if (toggleFocus)
+        {
+            await exampleInput.FocusAsync();
+            return;
+        }
+        await exampleInput2.FocusAsync();
+
     }
 }
