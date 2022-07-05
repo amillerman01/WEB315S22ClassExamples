@@ -1,10 +1,16 @@
 ﻿@page "/todo"
 
-<h3>Todo</h3>
+@* Using a lambda expression *@
+@* <h3>Todo (Items left: @todos.Count(todo => !todo.IsDone))</h3> *@
+
+@* Using a regular function for the Count condition checking *@
+@* Count will run this method for each item in the todos list *@
+<h3>Todo (Items left: @todos.Count(checkHowManyItemsAreDone))</h3>
 
 <ul>
     @foreach (var todo in todos)
     {
+        <input type="checkbox" @bind="todo.IsDone" />
         <li>@todo.Title</li>
     }
 </ul>
@@ -32,9 +38,12 @@
             todos.Add(newItem);
             newTodo = string.Empty; // reset the value of the input to be empty
         }
-
-        // Todo: Add the todo
     }
 
+    private bool checkHowManyItemsAreDone(TodoItem todo)
+    {
+        // if the item isn't done, the count should keep track of it
+        return !todo.IsDone;
+    }
 
 }
