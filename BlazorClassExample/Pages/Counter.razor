@@ -29,12 +29,16 @@
 
     private void IncrementCount()
     {
+        System.Console.WriteLine("Triggered the IncrementCount method: CurrentCount = " + currentCount);
+
         if (currentCount < 10 * IncrementAmount)
         {
             @* currentCount = currentCount + IncrementAmount; *@
             currentCount += IncrementAmount;
+            System.Console.WriteLine("Current count will be incremented!: CurrentCount = " + currentCount);
             return;
         }
+        System.Console.WriteLine("Exceeded the max value of 10: CurrentCount = " + currentCount);
         currentCount = 0;
     }
 
