@@ -25,10 +25,28 @@
     <button @onclick="AddTodo">Add todo</button>
     <button @onclick="AddTodoThatIsAlreadyDone">Add todo that is already done</button>
 </div>
+
+<div>
+    <h4>Output for List's toString method</h4>
+    <p>@todos.ToString()</p>
+</div>
+<div>
+    <h4>Output for TodoItem's toString method</h4>
+    <p>@defaultTodoItem.ToString()</p>
+</div>
+<div>
+    <h4>Output for our number's toString method</h4>
+    <p>@someNumber.ToString()</p>
+</div>
+
 @code {
     private List<TodoItem> todos = new List<TodoItem>();
     private string newTodo;
     @* private int count = 0; *@
+
+    private int someNumber = 10;
+
+    private TodoItem defaultTodoItem = new TodoItem { Title = "Default value for testing" };
 
     private void AddTodo()
     {
@@ -45,6 +63,7 @@
             todos.Add(newItem);
             newTodo = string.Empty; // reset the value of the input to be empty
         }
+        @* Console.WriteLine(someNumber + ""); *@
     }
     private void AddTodoThatIsAlreadyDone()
     {
