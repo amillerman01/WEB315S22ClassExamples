@@ -9,7 +9,32 @@
     }
 </ul>
 
+<input @bind="newTodo" placeholder="Something todo" />
+<button @onclick="AddTodo">Add todo</button>
+
 @code {
     private List<TodoItem> todos = new List<TodoItem>();
+    private string newTodo;
+    @* private int count = 0; *@
+
+    private void AddTodo()
+    {
+        @* Testing adding a static value to our todos list *@
+        @* todos.Add(new TodoItem { Title = "New Todo Item" + (++count) }); *@
+
+        @* Adding a dynamic value to our todo list *@
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            @* todos.Add(new TodoItem { Title = newTodo }); *@
+
+            // the long version of the code above
+            TodoItem newItem = new TodoItem { Title = newTodo };
+            todos.Add(newItem);
+            newTodo = string.Empty; // reset the value of the input to be empty
+        }
+
+        // Todo: Add the todo
+    }
+
 
 }
