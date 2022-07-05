@@ -1,0 +1,16 @@
+ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+label input {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.new-todo-wrapper input,
+.new-todo-wrapper button {
+    display: block;
+    width: 300px;
+    margin-top: 8px;
+}

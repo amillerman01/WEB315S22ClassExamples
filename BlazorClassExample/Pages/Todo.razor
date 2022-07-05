@@ -10,14 +10,21 @@
 <ul>
     @foreach (var todo in todos)
     {
-        <input type="checkbox" @bind="todo.IsDone" />
-        <li>@todo.Title</li>
+
+        <li>
+            <label>
+                <input type="checkbox" @bind="todo.IsDone" />
+                @todo.Title
+            </label>
+        </li>
     }
 </ul>
 
-<input @bind="newTodo" placeholder="Something todo" />
-<button @onclick="AddTodo">Add todo</button>
-
+<div class="new-todo-wrapper">
+    <input @bind="newTodo" placeholder="Something todo" />
+    <button @onclick="AddTodo">Add todo</button>
+    <button @onclick="AddTodoThatIsAlreadyDone">Add todo that is already done</button>
+</div>
 @code {
     private List<TodoItem> todos = new List<TodoItem>();
     private string newTodo;
@@ -35,6 +42,16 @@
 
             // the long version of the code above
             TodoItem newItem = new TodoItem { Title = newTodo };
+            todos.Add(newItem);
+            newTodo = string.Empty; // reset the value of the input to be empty
+        }
+    }
+    private void AddTodoThatIsAlreadyDone()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            // This will call the second constructor, so that the isDone property is true by default
+            TodoItem newItem = new TodoItem(newTodo);
             todos.Add(newItem);
             newTodo = string.Empty; // reset the value of the input to be empty
         }
