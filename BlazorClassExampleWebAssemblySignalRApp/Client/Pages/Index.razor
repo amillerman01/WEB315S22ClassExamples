@@ -33,6 +33,9 @@
 <div class="form-group">
     <button @onclick="SendPing" disabled="@(!IsConnected)">Send ping</button>
 </div>
+<div class="form-group">
+    <button @onclick="SendPingToMyself" disabled="@(!IsConnected)">Send ping to me</button>
+</div>
 <hr>
 
 @if (messages.Count > 0)
@@ -80,6 +83,13 @@
             StateHasChanged();
         });
 
+        hubConnection.On<string, int>("PingMyself", (user, pingNumber) =>
+        {
+            var encodedMsg = $"Hi {user}, your ping is: {pingNumber}";
+            userPing = encodedMsg;
+            StateHasChanged();
+        });
+
         await hubConnection.StartAsync();
     }
 
@@ -98,6 +108,9 @@
 
     async Task SendPing() =>
     await hubConnection.SendAsync("SendPingToOthers", userInput);
+
+    async Task SendPingToMyself() =>
+    await hubConnection.SendAsync("SendPingToCaller", userInput);
 
     @* public bool IsConnected { get {
         return hubConnection.State == HubConnectionState.Connected;
