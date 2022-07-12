@@ -3,6 +3,12 @@
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
 
+@if (!string.IsNullOrEmpty(userPing))
+{
+    <h4>
+        @userPing
+    </h4>
+}
 <div class="form-group">
     <label>
         User:
@@ -15,8 +21,18 @@
         <input @bind="messageInput" size="50" />
     </label>
 </div>
-<button @onclick="Send" disabled="@(!IsConnected)">Send</button>
-
+<div class="form-group">
+    <button @onclick="Send" disabled="@(!IsConnected)">Send to everyone</button>
+</div>
+<div class="form-group">
+    <button @onclick="SendToMe" disabled="@(!IsConnected)">Send to only myself</button>
+</div>
+<div class="form-group">
+    <button @onclick="SendToOthers" disabled="@(!IsConnected)">Send to everyone except myself</button>
+</div>
+<div class="form-group">
+    <button @onclick="SendPing" disabled="@(!IsConnected)">Send ping</button>
+</div>
 <hr>
 
 @if (messages.Count > 0)
@@ -32,6 +48,7 @@
 @code {
     private HubConnection hubConnection;
     private List<string> messages = new List<string>();
+    private string userPing;
     private string userInput;
     private string messageInput;
 
@@ -49,6 +66,20 @@
             StateHasChanged();
         });
 
+        hubConnection.On<string, string>("ReceiveMessageOthers", (user, message) =>
+        {
+            var encodedMsg = $"Message from {user}: {message}";
+            messages.Add(encodedMsg);
+            StateHasChanged();
+        });
+
+        hubConnection.On<string>("PingUsers", (user) =>
+        {
+            var encodedMsg = $"{user} has pinged the chat";
+            userPing = encodedMsg;
+            StateHasChanged();
+        });
+
         await hubConnection.StartAsync();
     }
 
@@ -58,6 +89,15 @@
         } *@
     async Task Send() =>
         await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+
+    async Task SendToMe() =>
+    await hubConnection.SendAsync("SendMessageToCaller", userInput, messageInput);
+
+    async Task SendToOthers() =>
+    await hubConnection.SendAsync("SendMessageToOthers", userInput, messageInput);
+
+    async Task SendPing() =>
+    await hubConnection.SendAsync("SendPingToOthers", userInput);
 
     @* public bool IsConnected { get {
         return hubConnection.State == HubConnectionState.Connected;
