@@ -17,3 +17,5 @@ You can make changes to files directly on github.com. This is useful for small c
 ## Making changes from a zip
 
 If you make changes from a zip, you can replace those files on your local repository later
+
+Adding something as an example
