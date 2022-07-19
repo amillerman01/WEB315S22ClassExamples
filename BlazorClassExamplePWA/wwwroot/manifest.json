@@ -1,10 +1,10 @@
 {
-  "name": "BlazorClassExamplePWA",
-  "short_name": "BlazorClassExamplePWA",
+  "name": "PWA Example",
+  "short_name": "PWA Example Short",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "theme_color": "#ff0000",
   "icons": [
     {
       "src": "icon-512.png",
